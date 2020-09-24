@@ -1,0 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/bibliography}
+
+% Ruta al archivo de bibliografía
+\addbibresource{TeX_Files/Bibliografia/sample.bib}
+
+% Configuración de la bibliografía (IEEE)
+\DefineBibliographyStrings{spanish}{
+  backrefpage = {citado en p.},
+  backrefpages = {citado en pp.},
+  url = [En línea]. {Disponible en:},
+  urlseen = {Accedido:}
+}

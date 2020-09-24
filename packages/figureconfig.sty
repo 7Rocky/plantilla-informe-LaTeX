@@ -1,0 +1,23 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/figureconfig}
+
+% Ruta al directorio de imágenes
+\graphicspath{{./images/}}
+
+% Comando para incluir una figura con "caption"
+\newcommand{\figcaption}[4][H]{
+  \begin{figure}[#1]
+    \centering
+    \includegraphics[width=#4\textwidth]{#2}
+    \caption{#3}
+    \label{fig:#2}
+  \end{figure}
+}
+
+% Comando para incluir una figura sin "caption"
+\newcommand{\fignocaption}[3][H]{
+  \begin{figure}[#1]
+    \centering
+    \includegraphics[width=#3\textwidth]{#2}
+  \end{figure}
+}

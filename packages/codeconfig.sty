@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/codeconfig}
+
+% Ruta relativa al código fuente
+\newcommand*{\sourcedir}{./src/}
+
+% Algunos Lexers para tener coloreado de palabras clave según el lenguaje utilizado
+\newcommand*{\docker}{./lexers/dockerfile.py:DockerfileLexer -x}
+\newcommand*{\json}{./lexers/json.py:JsonLexer -x}
+\newcommand*{\yaml}{./lexers/yaml.py:YamlLexer -x}
+
+\newcommand*{\matlab}{octave}
+
+% Estilo de colores de Visual Studio Code (Light)
+\usemintedstyle{vs}
+
+% Estilo de colores para HTML (estilo "perldoc")
+\usemintedstyle[html]{perldoc}
+
+% Fragmento de código con "caption"
+\newcommand*{\codecaption}[4][bgcolor=bgcolor, fontsize=\scriptsize, linenos=false]{
+  \begin{listing}[H]
+    \inputminted[#1]{#3}{\sourcedir/#2}
+    \vspace{-0.7cm}
+    \caption{#4}
+    \label{lst:#2}
+  \end{listing}
+}
+
+% Fragmento de código sin "caption"
+\newcommand*{\codenocaption}[3][bgcolor=bgcolor, fontsize=\scriptsize, linenos=false]{
+  \inputminted[#1]{#3}{\sourcedir/#2}
+}

@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{article}
+
+\newcommand*{\Author}{Nombre del autor}
+\newcommand*{\Keywords}{Palabras clave}
+\newcommand*{\Subject}{Titulación - Asignatura}
+\newcommand*{\Title}{Asignatura. Título de la Práctica}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[spanish, es-nodecimaldot]{babel}
+% \usepackage[backend=bibtex, backref, backrefstyle=none, date=comp, sorting=none, style=ieee, urldate=short]{biblatex}
+\usepackage[font=small, labelfont=bf, labelsep=period]{caption}
+% \usepackage[americanvoltage]{circuitikz}
+% \usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[bmargin=3cm, lmargin=3cm, rmargin=3cm, tmargin=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage[breaklinks]{hyperref}
+\usepackage[utf8]{inputenc}
+% \usepackage{lmodern, textcomp}
+\usepackage[newfloat]{minted}
+\usepackage{parskip}
+% \usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{subfiles}
+\usepackage{xcolor}
+
+\usepackage{csquotes}
+
+% \usepackage{packages/bibliography}
+\usepackage{packages/codeconfig}
+\usepackage{packages/figureconfig}
+% \usepackage{packages/footerconfig}
+% \usepackage{packages/headerconfig}
+\usepackage{packages/mycommands}
+% \usepackage{packages/plots}
+\usepackage{packages/references}
+% \usepackage{packages/titlesconfig}
+% \usepackage{packages/tocconfig}
+
+\title{\textbf{Asignatura} \protect\\ \underline{\textbf{Título de la Práctica}}}
+\author{\Author}
+\date{\today}
+
+\begin{document}
+
+  \maketitle
+  \vspace{2cm}
+
+  \subfile{subfiles/document.tex}
+
+\end{document}

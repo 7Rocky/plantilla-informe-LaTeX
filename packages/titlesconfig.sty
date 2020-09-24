@@ -1,0 +1,30 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/titlesconfig}
+
+% Comando para generar un anexo
+\newcommand{\annex}[1]{
+  \phantomsection
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}
+    \thispagestyle{plain}
+    \IfSubStr{#1}{A.}{}{\addtocontents{lof}{\addvspace {10\p@ }}}
+    \markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}
+}
+
+% Comando para generar una sección dentro de un anexo (subanexo)
+\newcommand{\subannex}[2]{
+  \phantomsection
+    \section*{{#1}.\hspace{2ex}{#2}}
+    \addcontentsline{toc}{section}{{#1}\hspace{1.75ex}{#2}}
+    \markright{{#1}.\hspace{2ex}{#2}}
+}
+
+% Comando para generar un nuevo capítulo (empezando en página impar)
+\newcommand{\newchapter}[0]{
+  \checkoddpage
+  \ifoddpage
+    \newpage \
+    \thispagestyle{empty}
+  \fi
+  \newpage
+}

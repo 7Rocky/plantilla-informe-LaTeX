@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/mycommands}
+
+\setlength{\parskip}{12pt}            % Longitud de los saltos de línea
+\setlength{\parindent}{0pt}           % No sangría
+
+% \renewcommand{\baselinestretch}{1.5}  % Interlineado
+\renewcommand{\textit}{\textsl}       % Cambio de "italics" a "slanted"
+
+% Palabras en cursiva o monoespaciado que se repiden en el documento
+\newcommand*{\Dockerfile}{\texttt{Dockerfile}}
+\newcommand*{\npm}{\texttt{npm}}
+\newcommand*{\pip}{\texttt{pip}}
+\newcommand*{\backend}{\textit{back-end}}
+\newcommand*{\cloud}{\textit{cloud}}
+\newcommand*{\framework}{\textit{framework}}
+\newcommand*{\frontend}{\textit{front-end}}
+\newcommand*{\hardware}{\textit{hardware}}
+\newcommand*{\software}{\textit{software}}
+
+% Paleta de colores
+\colorlet{lightgray}{gray!10}
+\colorlet{deepcyan}{cyan!40}
+\colorlet{normalcyan}{cyan!20}
+\colorlet{lightcyan}{cyan!10}
+
+% Comandos para los encabezados de tablas
+\newcommand*{\myheadertwo}[2]{\rowcolor{deepcyan} \vspace{0.2cm}\textbf{\large{#1}}\vspace{0.15cm} & \vspace{0.2cm}\textbf{\large{#2}}\vspace{0.15cm} \\}
+
+\newcommand*{\myheaderthree}[3]{\rowcolor{deepcyan} \vspace{0.2cm}\textbf{\large{#1}}\vspace{0.15cm} & \vspace{0.2cm}\textbf{\large{#2}}\vspace{0.15cm} & \vspace{0.2cm}\textbf{\large{#3}}\vspace{0.15cm} \\}
+
+\newcommand*{\myheaderfour}[4]{\rowcolor{deepcyan} \vspace{0.2cm}\textbf{\large{#1}}\vspace{0.15cm} & \vspace{0.2cm}\textbf{\large{#2}}\vspace{0.15cm} & \vspace{0.2cm}\textbf{\large{#3}}\vspace{0.15cm} & \vspace{0.2cm}\textbf{\large{#4}}\vspace{0.15cm} \\}
+

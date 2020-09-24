@@ -1,0 +1,21 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/plots}
+
+% Configuración básica de pgfplots
+\pgfplotsset{compat=1.16}
+\pgfplotsset{
+  every axis/.append style={
+    axis x line=middle,                                         % put the x axis in the middle
+    axis y line=middle,                                         % put the y axis in the middle
+    axis line style={->,color=black},                           % arrows on the axis
+    xlabel={$x$},                                               % default put x on x-axis
+    ylabel={$y$},                                               % default put y on y-axis
+  }
+}
+
+\tikzset{
+  every picture/.append style={
+    execute at begin picture={\deactivatequoting},
+    execute at end picture={\activatequoting}
+  }
+}

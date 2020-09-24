@@ -1,0 +1,189 @@
+\documentclass[../main.tex]{subfile}
+
+\begin{document}
+
+  \section{Introducción}
+
+    Esta es una introducción de la práctica. Aquí se puede poner de qué trata la práctica, qué es lo que se va a hacer, cómo se va a llevar a cabo y con qué tecnologías.
+
+  \section{Ecuaciones}
+
+    Usar ecuaciones en LaTeX es bastante sencillo. Si se quiere poner una ecuación en línea con el texto, se pone \mintinline{tex}|$e^{\mathrm{i}\pi} + 1 = 0$|, y quedaría como $e^{\mathrm{i}\pi} + 1 = 0$.
+
+    Si se prefiere poner la ecuación en un nuevo párrafo y centrada, se debe poner la misma expresión pero con dos símbolos \$ de apertura y cierre. Es decir: 
+    
+    \mintinline{tex}|$$\sum_{n = 1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$$|
+    
+    El resultado es:
+
+    $$
+    \sum_{n = 1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+    $$
+
+    Si se quiere referenciar una ecuación es necesario utilizar el entorno \texttt{equation}. Por ejemplo, el siguiente código:
+
+    \begin{minted}{tex}
+\begin{equation}
+  \label{eq:matrix_fibonacci}
+  \begin{pmatrix}
+    F_{n + 1} & F_n \\
+    F_n & F_{n - 1}
+  \end{pmatrix} = \begin{pmatrix}
+    1 & 1 \\
+    1 & 0
+  \end{pmatrix} ^ n
+\end{equation}
+    \end{minted}
+
+    Genera la siguiente ecuación:
+
+    \begin{equation}
+      \label{eq:matrix_fibonacci}
+      \begin{pmatrix}
+        F_{n + 1} & F_n \\
+        F_n & F_{n - 1}
+      \end{pmatrix} = \begin{pmatrix}
+        1 & 1 \\
+        1 & 0
+      \end{pmatrix} ^ n
+    \end{equation}
+
+    Esta ecuación puede ser referenciada utilizando \mintinline{tex}|\eqref{eq:matrix_fibonacci}|, y queda como \eqref{eq:matrix_fibonacci}.
+
+  \section{Figuras}
+
+    Para incluir una figura, en esta plantilla de LaTeX se dispone de un comando llamado \mintinline{tex}|\figcaption| que recibe tres parámetros:
+
+    \begin{enumerate}
+      \item Nombre del archivo de imagen (puede ser con o sin extensión, aunque se recomienda con extensión).
+      \item Texto del pie de figura.
+      \item Tamaño de la imagen (siendo 1 el ancho de la hoja).
+    \end{enumerate}
+
+    Por ejemplo, este código:
+
+    \begin{minted}{tex}
+\figcaption{Lab.png}{Sucesión de Fibonacci.}{0.9}
+    \end{minted}
+
+    Genera la siguiente figura:
+
+    \figcaption{Lab.png}{Sucesión de Fibonacci.}{0.9}
+
+    Para referenciar esta figura, basta con utilizar el comando \mintinline{tex}|\figref{Lab.png}|, indicando el nombre del archivo de imagen, y dará lugar al siguiente hipervínculo: \figref{Lab.png}. Si se quiere cambiar el nombre del tipo de referencia, se debe cambiar en el archivo \texttt{packages/references.sty}.
+
+    El formato del pie de foto se puede modificar en el archivo \texttt{main.tex}, donde se dice:
+
+    \begin{minted}{tex}
+\usepackage[font=small, labelfont=bf, labelsep=period]{caption}
+    \end{minted}
+
+    Más información al respecto puede encontrarse en la documentación del paquete \texttt{caption}.
+
+    Si se quiere incluir una imagen que no se va a referenciar o que no va a tener pie de figura, se puede utilizar el comando \mintinline{tex}|\fignocaption|, que solo necesita dos parámetros (el nombre del archivo y el tamaño de la imagen). De manera que \mintinline{tex}|\figcaption{Lab.png}{0.5}| muestra la siguiente imagen:
+
+    \fignocaption{Lab.png}{0.6}
+
+    Cabe mencionar que la estructura de directorios de la plantilla está pensada para incluir las imágenes en la carpeta \texttt{images/}. Si se desea cambiar el nombre de esta carpeta o su ubicación, se deberá cambiar el código \texttt{packages/figureconfig.sty}, en la parte en la que se dice:
+
+    \begin{minted}{tex}
+% Ruta al directorio de imágenes
+\graphicspath{{./images/}}
+    \end{minted}
+
+    Y poner lo que sea conveniente.
+
+  \section{Código fuente}
+
+    Para incluir código fuente se utiliza el paquete \texttt{minted}, el cual tiene soporte para gran cantidad de lenguajes de programación y lenguajes de marcado. El código puede ser incluido directamente en el código LaTeX, de manera que:
+
+    \begin{minted}[escapeinside=||]{tex}
+\begin{minted}[bgcolor=lightgray]{html}
+<!doctype html>
+<html>
+  <head>
+    <title>Hello, world!</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+\end{|minted|}
+    \end{minted}
+
+    Genera el siguiente código coloreado sintácticamente:
+
+    \begin{minted}[bgcolor=lightgray]{html}
+<!doctype html>
+<html>
+  <head>
+    <title>Hello, world!</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+    \end{minted}
+
+    El parámetro \texttt{bgcolor=lightgray} indica que el color de fondo sea gris claro. Este color \texttt{lightgray} está definido en el archivo \texttt{packages/mycommands.sty}.
+
+    Al entorno \texttt{minted} se le pueden añadir muchos parámetros, entre ellos \texttt{linenos} (para que se indique el número de cada linea del código a la izquierda) y \texttt{fontsize} (para indicar el tamaño de letra, este tamaño suele no especificarse o ponerse como \mintinline{tex}|fontsize=\footnotesize| o como \mintinline{tex}|fontsize=\scriptsize|).
+
+    Una utilidad muy buena de \texttt{minted} es la posibilidad de insertar código fuente desde un archivo existente, sin necesidad de copiar el código en el archivo de LaTeX. Además, se puede indicar desde qué línea hasta qué linea se debe incluir. Para ello, en esta plantilla existe el comando \mintinline{tex}|codecaption|, el cual requiere de cuatro parámetros:
+
+    \begin{enumerate}
+      \item Ruta al fichero.
+      \item El lenguaje de programación o marcado utilizado.
+      \item Texto del pie de código.
+    \end{enumerate}
+
+    A este comando se le pueden insertar muchas opciones, como \texttt{bgcolor}, \texttt{linenos}, \texttt{fontsize}, \texttt{firstline} y \texttt{lastline}. Por ejemplo, con la siguiente instrucción:
+
+    \begin{minted}{tex}
+\codecaption[
+  bgcolor=lightgray,
+  firstline=28,
+  fontsize=\footnotesize,
+  lastline=36
+]
+{Lab.m}
+{\matlab}
+{Función para generar la sucesión de Fibonacci.}
+    \end{minted}
+
+    Se obtiene:
+
+    \codecaption[bgcolor=lightgray, firstline=28, fontsize=\footnotesize, lastline=36]{Lab.m}{\matlab}{Función para generar la sucesión de Fibonacci.}
+
+    Al igual que antes, para referenciar este código, se puede utilizar el comando configurado como \mintinline{tex}|\coderef{Lab.m}|, indicando la ruta del archivo, de manera que se obtiene el hipervínculo: \coderef{Lab.m}.
+
+    De nuevo, en esta plantilla, el código fuente se debe poner en la carpeta \texttt{src/}. Si se quiere elegir otra carpeta independiente de la plantilla se ha de modificar el archivo \texttt{packages/codeconfig.sty}, donde dice:
+
+    \begin{minted}{tex}
+% Ruta relativa al código fuente
+\newcommand*{\sourcedir}{./src/}
+    \end{minted}
+
+    Es probable que sea necesario poner una ruta absoluta y evitar nombres de carpetas y archivos con espacios o caracteres raros.
+
+    Si no se quiere referenciar el código o escribir un pie de código, se puede utilizar el comando \mintinline{tex}|\codenocaption|, el cual requiere los mismos argumentos que el comando anterior, a excepción del texto del pie de código. Por ejemplo:
+
+    \begin{minted}{tex}
+\codenocaption[bgcolor=lightgray, fontsize=\footnotesize]{main.c}{c}
+    \end{minted}
+
+    Muestra el siguiente código en C:
+
+    \codenocaption[bgcolor=lightgray, fontsize=\footnotesize]{main.c}{c}
+
+    A la hora de elegir el lenguaje para que \texttt{minted} coloree el código, cabe mencionar que no todos funcionan bien al 100\%, puede que los \textit{lexers} no estén actualizados a las últimas tendencias de los lenguajes. Por este motivo, se han añadido algunos \textit{lexers} personalizados en la carpeta \texttt{lexers/}. Están escritos en Python y hacen uso de expresiones regulares. Para utilizarlos, basta con poner \mintinline{tex}|\dockerfile| en lugar de \texttt{dockerfile}, \mintinline{tex}|\json| en lugar de \texttt{json}, \mintinline{tex}|\yaml| en lugar de \texttt{yaml} y \mintinline{tex}|\matlab| en lugar de \texttt{matlab} (este último comando simplemente cambia el \textit{lexer} de \texttt{matlab} por el de \texttt{octave}, porque funciona mejor).
+
+  \section{Conclusiones}
+
+    En este apartado se debe poner qué se ha conseguido con la práctica, qué se ha aprendido, qué problemas han surgido y cómo se han solucionado. Se pueden incluir opiniones, observaciones y comentarios relacionados con el desarrollo de la práctica.
+
+    Respecto a la plantilla de LaTeX implementada, es bastante básica y trata de minimizar la necesidad de conocer el lenguaje LaTeX para poder generar un documento de calidad con este lenguaje y sin tener que pasar más tiempo investigando en cómo trabajar en LaTeX que en escribir el informe.
+
+\end{document}

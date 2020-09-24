@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/headerconfig}
+
+% Activar el estilo Fancy
+\fancyhf{}
+
+% Encabezado centrado
+\chead{
+  \footnotesize{
+    \textbf{\MakeUppercase{Universidad XXXXXXXXXX}}\\
+    \textsc{Facultad YYYYYYYYYY}\\
+    \textsc{Grado/Máster ZZZZZZZZZZ}
+    \vspace{0.7cm}
+  }
+}
+
+% Título del capítulo y la sección a izquierda y derecha del encabezado
+\fancyhead[LE]{\slshape \leftmark}
+\fancyhead[RO]{\slshape \nouppercase \rightmark}
+
+% Separaciones
+\headheight = 90pt
+\headsep = 20pt
+\topmargin = -50pt

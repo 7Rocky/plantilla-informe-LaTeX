@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{packages/references}
+
+% Nombre de los elementos
+\providecommand{\chaptername}{Capítulo}
+\providecommand{\sectionname}{Sección}
+
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice de la memoria}}
+\addto\captionsspanish{\renewcommand{\figurename}{Fig.}}
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+
+\SetupFloatingEnvironment{listing}{name={Código}}
+
+% Referencias cruzadas
+\newcommand*{\chapterref}[1]{\chaptername~\ref{chp:#1}}
+\newcommand*{\coderef}[1]{Código~\ref{lst:#1}}
+\newcommand*{\figref}[1]{\figurename~\ref{fig:#1}}
+\newcommand*{\sectionref}[1]{\sectionname~\ref{sec:#1}}
+\newcommand*{\tabref}[1]{\tablename~\ref{table:#1}}
+
+% Configuración de hipervínculos
+\hypersetup{
+  citecolor=black,
+  colorlinks=true,
+  filecolor=magenta,
+  linkcolor=black,
+  pdfauthor=\Author,
+  pdfkeywords=\Keywords,
+  pdfpagelayout=TwoPageRight,
+  pdfpagemode=FullScreen,
+  pdfsubject=\Subject,
+  pdftitle=\Title,
+  urlcolor=blue
+}
+\urlstyle{same}
