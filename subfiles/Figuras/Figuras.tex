@@ -1,0 +1,48 @@
+\documentclass[../../main.tex]{subfile}
+
+\providecommand{\subdirname}{subfiles/Figuras}
+
+\begin{document}
+
+  Para incluir una figura, en esta plantilla de LaTeX se dispone de un comando llamado \mintinline{tex}|\figcaption| que recibe tres parámetros:
+
+  \begin{enumerate}
+    \item Nombre del archivo de imagen (puede ser con o sin extensión, aunque se recomienda con extensión).
+    \item Texto del pie de figura.
+    \item Tamaño de la imagen (siendo 1 el ancho de la hoja).
+  \end{enumerate}
+
+  Por ejemplo, este código:
+
+  \begin{minted}[fontsize=\footnotesize]{tex}
+\figcaption{Lab.png}{Sucesión de Fibonacci.}{0.9}
+  \end{minted}
+
+  Genera la siguiente figura:
+
+  \figcaption{Lab.png}{Sucesión de Fibonacci.}{0.9}
+
+  Para referenciar esta figura, basta con utilizar el comando \mintinline{tex}|\figref{Lab.png}|, indicando el nombre del archivo de imagen, y dará lugar al siguiente hipervínculo: \figref{Lab.png}. Si se quiere cambiar el nombre del tipo de referencia, se debe cambiar en el archivo \texttt{packages/references.sty}.
+
+  El formato del pie de foto se puede modificar en el archivo \texttt{main.tex}, donde se dice:
+
+  \begin{minted}[fontsize=\footnotesize]{tex}
+\usepackage[font=small, labelfont=bf, labelsep=period]{caption}
+  \end{minted}
+
+  Más información al respecto puede encontrarse en la documentación del paquete \texttt{caption}.
+
+  Si se quiere incluir una imagen que no se va a referenciar o que no va a tener pie de figura, se puede utilizar el comando \mintinline{tex}|\fignocaption|, que solo necesita dos parámetros (el nombre del archivo y el tamaño de la imagen). De manera que \mintinline{tex}|\figcaption{Lab.png}{0.5}| muestra la siguiente imagen:
+
+  \fignocaption{Lab.png}{0.6}
+
+  Cabe mencionar que la estructura de directorios de la plantilla está pensada para incluir las imágenes en la carpeta \texttt{images/}. Si se desea cambiar el nombre de esta carpeta o su ubicación, se deberá cambiar el código \texttt{packages/figureconfig.sty}, en la parte en la que se dice:
+
+  \begin{minted}[fontsize=\footnotesize]{tex}
+% Ruta al directorio de imágenes
+\graphicspath{{./images/}}
+  \end{minted}
+
+  Y poner lo que sea conveniente.
+
+\end{document}

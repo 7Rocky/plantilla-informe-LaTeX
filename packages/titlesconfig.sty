@@ -1,30 +1,23 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{packages/titlesconfig}
 
-% Comando para generar un anexo
-\newcommand{\annex}[1]{
-  \phantomsection
-    \chapter*{#1}
-    \addcontentsline{toc}{chapter}{#1}
-    \thispagestyle{plain}
-    \IfSubStr{#1}{A.}{}{\addtocontents{lof}{\addvspace {10\p@ }}}
-    \markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}
+% Comando para generar una sección
+\newcommand*{\mysection}[3]{
+  \section{#1}
+    \label{sec:#3/#2/#2.tex}
+    \subfile{#3/#2/#2.tex}
 }
 
-% Comando para generar una sección dentro de un anexo (subanexo)
-\newcommand{\subannex}[2]{
-  \phantomsection
-    \section*{{#1}.\hspace{2ex}{#2}}
-    \addcontentsline{toc}{section}{{#1}\hspace{1.75ex}{#2}}
-    \markright{{#1}.\hspace{2ex}{#2}}
+% Comando para generar una subsección
+\newcommand*{\mysubsection}[3]{
+  \subsection{#1}
+    \label{sec:#3/#2/#2.tex}
+    \subfile{#3/#2/#2.tex}
 }
 
-% Comando para generar un nuevo capítulo (empezando en página impar)
-\newcommand{\newchapter}[0]{
-  \checkoddpage
-  \ifoddpage
-    \newpage \
-    \thispagestyle{empty}
-  \fi
-  \newpage
+% Comando para generar una subsubsección
+\newcommand*{\mysubsubsection}[3]{
+  \subsubsection{#1}
+    \label{sec:#3/#2/#2.tex}
+    \subfile{#3/#2/#2.tex}
 }

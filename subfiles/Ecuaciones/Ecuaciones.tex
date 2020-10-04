@@ -1,0 +1,49 @@
+\documentclass[../../main.tex]{subfile}
+
+\providecommand{\subdirname}{subfiles/Ecuaciones}
+
+\begin{document}
+
+  Usar ecuaciones en LaTeX es bastante sencillo. Si se quiere poner una ecuación en línea con el texto, se pone \mintinline{tex}|$e^{\mathrm{i}\pi} + 1 = 0$|, y quedaría como $e^{\mathrm{i}\pi} + 1 = 0$.
+
+  Si se prefiere poner la ecuación en un nuevo párrafo y centrada, se debe poner la misma expresión pero con dos símbolos \$ de apertura y cierre. Es decir: 
+  
+  \mintinline{tex}|$$\sum_{n = 1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$$|
+  
+  El resultado es:
+
+  $$
+  \sum_{n = 1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+  $$
+
+  Si se quiere referenciar una ecuación es necesario utilizar el entorno \texttt{equation}. Por ejemplo, el siguiente código:
+
+  \begin{minted}[fontsize=\footnotesize]{tex}
+\begin{equation}
+  \label{eq:matrix_fibonacci}
+  \begin{pmatrix}
+    F_{n + 1} & F_n \\
+    F_n & F_{n - 1}
+  \end{pmatrix} = \begin{pmatrix}
+    1 & 1 \\
+    1 & 0
+  \end{pmatrix} ^ n
+\end{equation}
+  \end{minted}
+
+  Genera la siguiente ecuación:
+
+  \begin{equation}
+    \label{eq:matrix_fibonacci}
+    \begin{pmatrix}
+      F_{n + 1} & F_n \\
+      F_n & F_{n - 1}
+    \end{pmatrix} = \begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix} ^ n
+  \end{equation}
+
+  Esta ecuación puede ser referenciada utilizando \mintinline{tex}|\eqref{eq:matrix_fibonacci}|, y queda como \eqref{eq:matrix_fibonacci}.
+
+\end{document}
