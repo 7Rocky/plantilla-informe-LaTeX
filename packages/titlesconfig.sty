@@ -2,22 +2,22 @@
 \ProvidesPackage{packages/titlesconfig}
 
 % Comando para generar una sección
-\newcommand*{\mysection}[3]{
+\newcommand*{\mysection}[2]{
   \section{#1}
-    \label{sec:#3/#2/#2.tex}
-    \subfile{#3/#2/#2.tex}
+    \label{sec:#1}
+    \subfile{#2/#2.tex}
 }
 
 % Comando para generar una subsección
-\newcommand*{\mysubsection}[3]{
+\newcommand*{\mysubsection}[2]{
   \subsection{#1}
-    \label{sec:#3/#2/#2.tex}
-    \subfile{#3/#2/#2.tex}
+    \label{sec:#1}
+    \subfile{#2/#2.tex}
 }
 
 % Comando para generar una subsubsección
-\newcommand*{\mysubsubsection}[3]{
+\newcommand*{\mysubsubsection}[2]{
   \subsubsection{#1}
-    \label{sec:#3/#2/#2.tex}
-    \subfile{#3/#2/#2.tex}
+    \label{sec:#1}
+    \subfile{#2/#2.tex}
 }

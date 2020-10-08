@@ -1,7 +1,5 @@
 \documentclass[../../main.tex]{subfile}
 
-\providecommand{\subdirname}{subfiles/Estructura_del_documento}
-
 \begin{document}
 
   Una bondad de utilizar LaTeX como generador de documentos frente a otras herramientas es la posibilidad de estructurar el código del documento completo en distintos archivos para poder trabajar mejor. Esto se realiza mediante un paquete llamado \texttt{subfiles}.
@@ -9,12 +7,12 @@
   La manera más común de utilizar \texttt{subfiles} es utilizar la siguiente línea en el documento que incluye el \texttt{subfile}:
 
   \begin{minted}[fontsize=\footnotesize]{tex}
-\subfile{subfiles/Estructura_del_documento/Prueba_subfiles.tex}
+\subfile{Prueba_subfiles.tex}
   \end{minted}
 
   Y el resultado de este comando es el siguiente:
 
-  \subfile{subfiles/Estructura_del_documento/Prueba_subfiles.tex}
+  \subfile{Prueba_subfiles.tex}
 
   Este archivo \texttt{Prueba\_subfiles.tex} contiene lo siguiente:
 
@@ -22,31 +20,23 @@
 
   En cada \texttt{subfile} hay que incluir la ruta relativa desde el \texttt{subfile} hasta el archivo principal (\texttt{main.tex} en esta plantilla) y decir que el documento es de clase \texttt{subfile}.
 
-  A continuación, se incluye una variable que guarda la ruta del \texttt{subfile} desde el archivo principal, para facilitar la inclusión de \texttt{subfiles} en el propio \texttt{subfile}. El comando descrito anteriormente podría haberse utilizado como:
-
-  \begin{minted}[fontsize=\footnotesize]{tex}
-\subfile{\subdirname/Prueba_subfiles.tex}
-  \end{minted}
-
-  Es importante notar que los hijos del archivo \texttt{main.tex} tiene una variable \mintinline{latex}|\dirname|. Los hijos de estos tienen una variable \mintinline{latex}|\subdirname|. Y, a su vez, los hijos de estos tienen una variable \mintinline{latex}|\subsubdirname|. Nótese cómo con cada nuevo nivel de \texttt{subfiles} se añade un \texttt{sub} al nombre de la variable.
-
-  Como se ha dicho antes, esto es para facilitar el uso de \texttt{subfiles} y no tener que escribir siempre la ruta relativa completa desde el archivo \texttt{main.tex}. Se hace más estructurado el proyecto LaTeX al trabajar con carpetas y subcarpetas, todas organizadas según las distintas secciones del documento.
+  Se hace más estructurado el proyecto LaTeX si se trabaja con carpetas y subcarpetas, todas organizadas según las distintas secciones del documento.
 
   Así, el uso que se recomienda de los \texttt{subfiles} es el de un \texttt{subfile} por apartado en el documento\footnote{También es conveniente utilizar un \texttt{subfile} cuando se incluya un dibujo con \texttt{tikzpicture}, una tabla, una gráfica con \texttt{pgfplots}...}. De manera que en el archivo padre se tenga algo como lo siguiente:
 
   \begin{minted}[fontsize=\footnotesize]{tex}
 \section{Estructura del documento}
-  \label{sec:\dirname/Estructura_del_documento/Estructura_del_documento.tex}
-  \subfile{\dirname/Estructura_del_documento/Estructura_del_documento.tex}
+  \label{sec:Estructura del documento}
+  \subfile{Estructura_del_documento/Estructura_del_documento.tex}
   \end{minted}
 
-  Sin embargo, estas tres líneas de código se han resumido en un comando \mintinline{latex}|\mysection|, que recibe tres parámetros. El equivalente al código anterior sería:
+  Sin embargo, estas tres líneas de código se han resumido en un comando \mintinline{latex}|\mysection|, que recibe dos parámetros. El equivalente al código anterior sería:
 
   \begin{minted}[fontsize=\footnotesize]{tex}
-\mysection{Estructura del documento}{Estructura_del_documento}{\dirname}
+\mysection{Estructura del documento}{Estructura_del_documento}
   \end{minted}
 
-  Como se puede observar, el primer parámetro es el título que se mostrará en el documento; el segundo parámetro es el nombre del archivo que tiene el contenido de la sección (sin extensión); y el tercer argumento es la variable que se provee al inicio de cada \texttt{subfile}, de la que se ha hablado anteriormente.
+  Como se puede observar, el primer parámetro es el título que se mostrará en el documento (y el nombre de la etiqueta); y el segundo parámetro es el nombre del archivo que tiene el contenido de la sección (sin extensión).
 
   Al igual que existe \mintinline{latex}|\mysection| en el archivo \texttt{packages/titlesconfig.sty}, existen otros comandos como \mintinline{latex}|\mysubsection| y \mintinline{latex}|\mysubsubsection|, los cuales tienen la misma utilidad pero con otros niveles de sección en el documento.
 
