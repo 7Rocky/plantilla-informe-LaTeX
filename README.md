@@ -15,7 +15,6 @@ La plantilla se ha desarrollado en un ordenador con macOS, por lo que es probabl
   - [Instalación de Pygments](#h2-idinstalación-de-pygments-187instalación-de-pygmentsh2)
 
 ## Uso con LaTeX y Pygments instalados
----
 
 Si se tiene LaTeX y Pygments instalados, se puede clonar el repositorio o descargar un archivo comprimido. Desde ahí, se puede acceder a la carpeta del proyecto y ejecutar el comando:
 
@@ -44,7 +43,6 @@ Se recomienda utilizar Visual Studio Code y configurar el siguiente _keybinding_
 Con esto, cada vez que se pulse la combinación de teclas `cmd + T`, se compilará el documento LaTeX y se abrirá el archivo PDF resultante si no hay errores en el código.
 
 ## Uso con Docker instalado
----
 
 Si se dispone de [Docker](https://docs.docker.com/get-docker/) instalado, no es necesario instalar LaTeX, ya que se puede compilar el código en un contenedor Docker mediante el siguiente comando desde el directorio principal (donde esté el archivo `main.tex`):
 
@@ -75,7 +73,6 @@ Desde Visual Studio Code, el _keybinding_ se puede cambiar entonces por:
 Además, evita que se tenga que instalar LaTeX y sus dependencias en el equipo local.
 
 ## Instalación de LaTeX
----
 
 ### MacTeX
 
@@ -106,7 +103,6 @@ Existen otros paquetes de `texlive` en el repositorio de `apt`. Si se tienen con
 No obstante, es recomendable instalar `texlive-full` para evitar problemas.
 
 ## Instalación de Pygments
----
 
 Tambien es necesario tener el paquete [Pygments](https://pygments.org) instalado para que funcione el resaltado de código fuente.
 
