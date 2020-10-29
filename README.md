@@ -49,16 +49,18 @@ Con esto, cada vez que se pulse la combinación de teclas `cmd + T`, se compilar
 Si se dispone de [Docker](https://docs.docker.com/get-docker/) instalado, no es necesario instalar LaTeX, ya que se puede compilar el código en un contenedor Docker mediante el siguiente comando desde el directorio `template` (donde está el archivo `main.tex`):
 
 ```bash
-docker run -v $(pwd)/..:/project -it 7rocky/latex
+docker run --rm -v $(pwd)/..:/project -it 7rocky/latex
 ```
 
 Cuando termine de compilar, se puede abrir el archivo PDF generado mediante cualquier visor de PDF. En macOS se puede indicar desde la consola, modificando el comando anterior:
 
 ```bash
-docker run -v $(pwd)/..:/project -it 7rocky/latex && open main.pdf
+docker run --rm -v $(pwd)/..:/project -it 7rocky/latex && open main.pdf
 ```
 
 Este contenedor es bastante pesado, ocupa 4.2 GB, pero el usar Docker permite usar el contenedor cuando se necesite y después borrarlo y recuperar espacio.
+
+**Nota:** Es importante que la ruta absoluta del directorio de trabajo no tenga espacios. De lo contrario, el montaje del volumen de Docker mediante `$(pwd)` no funcionará.
 
 Desde Visual Studio Code, el _keybinding_ se puede cambiar entonces por:
 
@@ -67,7 +69,7 @@ Desde Visual Studio Code, el _keybinding_ se puede cambiar entonces por:
   "key": "cmd+t",
   "command": "workbench.action.terminal.sendSequence",
   "args": {
-    "text": "docker run -v $(pwd)/..:/project -it 7rocky/latex; open main.pdf\u000D"
+    "text": "docker run --rm -v $(pwd)/..:/project -it 7rocky/latex; open main.pdf\u000D"
   }
 }
 ```
