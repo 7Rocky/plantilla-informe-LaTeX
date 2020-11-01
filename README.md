@@ -64,7 +64,7 @@ Si el archivo generado con LaTeX es muy grande, se puede comprimir el PDF utiliz
 La imagen de Docker `7rocky/latex` ya tiene instalado GhostScript. Para comprimir el archivo `main.pdf` habrá que ejecutar:
 
 ```bash
-docker run --rm -v $(pwd)/..:/project -it 7rocky/latex sh compress.sh
+docker run --rm -v $(pwd)/..:/project -it 7rocky/latex compress
 ```
 
 El archivo comprimido se llama `main-compressed.pdf`.
