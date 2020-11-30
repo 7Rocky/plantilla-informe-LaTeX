@@ -39,7 +39,15 @@ La imagen de este contenedor es bastante pesada (4.2 GB), pero Docker permite us
 docker rmi 7rocky/latex
 ```
 
-**Nota:** Es importante que la ruta absoluta del directorio de trabajo no tenga espacios. De lo contrario, el montaje del volumen de Docker mediante `-v $(pwd)/..:/project` no funcionará.
+**Nota:**
+
+Es importante que la ruta absoluta del directorio de trabajo no tenga espacios. De lo contrario, el montaje del volumen de Docker mediante `-v $(pwd)/..:/project` no funcionará.
+
+Si la ruta absoluta del directorio tiene espacios, en algunos casos puede funcionar con `-v '${PWD}'/..:/project` si se tiene una variable de entorno llamada `$PWD` (para saberlo, se puede ejecutar `env` o `echo $PWD` y verificar que existe y que contiene el directorio de trabajo). También se puede crear esta variable de manera sencilla:
+
+```bash
+export PWD=/ruta/absoluta/al/directorio/de/trabajo
+```
 
 ## Integración con Visual Studio Code
 
@@ -56,6 +64,12 @@ Se recomienda utilizar Visual Studio Code y configurar el siguiente _keybinding_
 ```
 
 Con esto, cada vez que se pulse la combinación de teclas `cmd + T`, se compilará el documento LaTeX y se abrirá el archivo PDF resultante si no hay errores en el código.
+
+Si el _keybinding_ no funciona, se puede probar a cambiar el comando por el de la **Nota** anterior:
+
+```json
+"docker run --rm -v '${PWD}'/..:/project -it 7rocky/latex; open main.pdf\u000D"
+```
 
 ## Compresión del archivo PDF
 
