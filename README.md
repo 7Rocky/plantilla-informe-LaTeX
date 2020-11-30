@@ -43,10 +43,10 @@ docker rmi 7rocky/latex
 
 Es importante que la ruta absoluta del directorio de trabajo no tenga espacios. De lo contrario, el montaje del volumen de Docker mediante `-v $(pwd)/..:/project` no funcionará.
 
-Si la ruta absoluta del directorio tiene espacios, en algunos casos puede funcionar con `-v '${PWD}'/..:/project` si se tiene una variable de entorno llamada `$PWD` (para saberlo, se puede ejecutar `env` o `echo $PWD` y verificar que existe y que contiene el directorio de trabajo). También se puede crear esta variable de manera sencilla:
+Si la ruta absoluta del directorio tiene espacios, en algunos casos puede funcionar con `-v "${PWD}"/..:/project` si se tiene una variable de entorno llamada `$PWD` (para saberlo, se puede ejecutar `env` o `echo $PWD` y verificar que existe y que contiene el directorio de trabajo). También se puede crear esta variable de manera sencilla:
 
 ```bash
-export PWD=/ruta/absoluta/al/directorio/de/trabajo
+export PWD="/ruta/absoluta/al/directorio/de/trabajo"
 ```
 
 ## Integración con Visual Studio Code
