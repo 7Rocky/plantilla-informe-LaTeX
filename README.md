@@ -68,7 +68,7 @@ Con esto, cada vez que se pulse la combinación de teclas `cmd + T`, se compilar
 Si el _keybinding_ no funciona, se puede probar a cambiar el comando por el de la **Nota** anterior:
 
 ```json
-"docker run --rm -v '${PWD}'/..:/project -it 7rocky/latex; open main.pdf\u000D"
+"docker run --rm -v \"${PWD}\"/..:/project -it 7rocky/latex; open main.pdf\u000D"
 ```
 
 ## Compresión del archivo PDF
