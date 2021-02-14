@@ -4,7 +4,7 @@ En este repositorio se puede encontrar una plantilla hecha en LaTeX pensada para
 
 La plantilla se ha desarrollado en un ordenador con macOS, por lo que es probable que no todas las instrucciones que aparecen aquí sean válidas en todos los sistemas operativos.
 
-**Plantilla de ejemplo:** [main.pdf](main.pdf)
+**Plantilla de ejemplo:** [template/main.pdf](main.pdf)
 
 **Contenidos:**
 
