@@ -2,4 +2,6 @@
 *.aux
 *.log
 *.out
+*.fls
+*.fdb_latexmk
 _minted-main
