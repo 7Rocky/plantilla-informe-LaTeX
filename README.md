@@ -15,7 +15,7 @@ La plantilla se ha desarrollado en un ordenador con macOS, por lo que es probabl
 
 ## Modo de uso
 
-La plantilla está pensada para compilarse desde un contenedor de Docker con la imagen `7rocky/latex` (disponible en [Docker Hub](https://hub.docker.com/repository/docker/7rocky/latex)), por lo que es necesario tener [Docker](https://docs.docker.com/get-docker/) instalado.
+La plantilla está pensada para compilarse desde un contenedor de Docker con la imagen `7rocky/latex` (disponible en [Docker Hub](https://hub.docker.com/r/7rocky/latex)), por lo que es necesario tener [Docker](https://docs.docker.com/get-docker/) instalado.
 
 No es necesario instalar LaTeX en el ordenador de trabajo, ya que se puede compilar el código en un contenedor Docker mediante el siguiente comando desde el directorio `template` (donde está el archivo `main.tex`):
 
